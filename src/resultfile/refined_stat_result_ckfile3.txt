@@ -1,0 +1,236 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+Model Name: Crossformer
+Input Sequence Length: 720
+Prediction Length: 720
+Learning Rate Adjustment Type: type1
+mse: 3.5268545150756836
+mae: 0.972080647945404
+Total Epochs: 6
+Total Epoch Cost Time: 77319.18 seconds
+
+Model Name: Crossformer
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 3.513012647628784
+mae: 0.9436008930206299
+Total Epochs: 7
+Total Epoch Cost Time: 70011.21 seconds
+
+Model Name: Crossformer
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 3.115400791168213
+mae: 0.8903450965881348
+Total Epochs: 6
+Total Epoch Cost Time: 27248.13 seconds
+
+Model Name: Crossformer
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 2.702702283859253
+mae: 0.8220290541648865
+Total Epochs: 6
+Total Epoch Cost Time: 16801.29 seconds
+
+Model Name: Crossformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type2
+mse: 2.3978586196899414
+mae: 0.6970788240432739
+Total Epochs: 8
+Total Epoch Cost Time: 20006.72 seconds
+
+Model Name: FEDformer
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 2.5801498889923096
+mae: 0.790854275226593
+Total Epochs: 12
+Total Epoch Cost Time: 177958.28 seconds
+
+Model Name: FEDformer
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.5151054859161377
+mae: 0.7779150605201721
+Total Epochs: 13
+Total Epoch Cost Time: 169531.96 seconds
+
+Model Name: FEDformer
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 2.2083051204681396
+mae: 0.7317196726799011
+Total Epochs: 10
+Total Epoch Cost Time: 83610.96 seconds
+
+Model Name: FedFormer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 2.0858426094055176
+mae: 0.702654242515564
+Total Epochs: 11
+Total Epoch Cost Time: 81496.08 seconds
+
+Model Name: FUSST
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.5867785215377808
+mae: 0.45299604535102844
+Total Epochs: 11
+Total Epoch Cost Time: 1032.63 seconds
+
+Model Name: FUSST
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 1.7897837162017822
+mae: 0.5224279761314392
+Total Epochs: 7
+Total Epoch Cost Time: 622.79 seconds
+
+Model Name: FUSST
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 2.1265225410461426
+mae: 0.6026824116706848
+Total Epochs: 6
+Total Epoch Cost Time: 687.16 seconds
+
+Model Name: FUSST
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.0654447078704834
+mae: 0.5887762904167175
+Total Epochs: 6
+Total Epoch Cost Time: 1046.55 seconds
+
+Model Name: FUSST
+Input Sequence Length: 720
+Prediction Length: 720
+Learning Rate Adjustment Type: type1
+mse: 3.3482394218444824
+mae: 0.832334578037262
+Total Epochs: 11
+Total Epoch Cost Time: 4064.40 seconds
+
+Model Name: FUSST
+Input Sequence Length: 1440
+Prediction Length: 1440
+Learning Rate Adjustment Type: type1
+mse: 4.429808616638184
+mae: 1.1396549940109253
+Total Epochs: 7
+Total Epoch Cost Time: 3521.34 seconds
+
+Model Name: FUSST
+Input Sequence Length: 192
+Prediction Length: 24
+Learning Rate Adjustment Type: type1
+mse: 1.296694040298462
+mae: 0.37197059392929077
+Total Epochs: 11
+Total Epoch Cost Time: 800.74 seconds
+
+Model Name: Autoformer
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.4205241203308105
+mae: 0.7627061605453491
+Total Epochs: 7
+Total Epoch Cost Time: 104529.77 seconds
+
+Model Name: Autoformer
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 2.039632558822632
+mae: 0.6712631583213806
+Total Epochs: 6
+Total Epoch Cost Time: 50243.99 seconds
+
+Model Name: Autoformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.845353126525879
+mae: 0.5954226851463318
+Total Epochs: 7
+Total Epoch Cost Time: 25489.35 seconds
+
+Model Name: DLinear
+Input Sequence Length: 1440
+Prediction Length: 1440
+Learning Rate Adjustment Type: type1
+mse: 4.24737548828125
+mae: 1.099176287651062
+Total Epochs: 15
+Total Epoch Cost Time: 1704.29 seconds
+
+Model Name: DLinear
+Input Sequence Length: 720
+Prediction Length: 720
+Learning Rate Adjustment Type: type1
+mse: 3.1348679065704346
+mae: 0.8354629874229431
+Total Epochs: 8
+Total Epoch Cost Time: 167.12 seconds
+
+Model Name: DLinear
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 2.189939498901367
+mae: 0.6377171277999878
+Total Epochs: 16
+Total Epoch Cost Time: 139.82 seconds
+
+Model Name: DLinear
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.145732879638672
+mae: 0.627136766910553
+Total Epochs: 20
+Total Epoch Cost Time: 167.39 seconds
+
+Model Name: DLinear
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 1.9135582447052002
+mae: 0.5749268531799316
+Total Epochs: 13
+Total Epoch Cost Time: 64.30 seconds
+
+Model Name: DLinear
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.740369200706482
+mae: 0.5240353941917419
+Total Epochs: 12
+Total Epoch Cost Time: 41.17 seconds
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

@@ -1,0 +1,46 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+Model Name: Crossformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 2.3978586196899414
+mae: 0.6970788240432739,
+
+Model Name: FEDformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 2.0858426094055176
+mae: 0.702654242515564,
+
+Model Name: FUSST
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.5867785215377808
+mae: 0.45299604535102844,
+
+Model Name: FUSST
+Input Sequence Length: 192
+Prediction Length: 24
+Learning Rate Adjustment Type: type1
+mse: 1.296694040298462
+mae: 0.37197059392929077,
+
+Model Name: Autoformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.845353126525879
+mae: 0.5954226851463318,
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

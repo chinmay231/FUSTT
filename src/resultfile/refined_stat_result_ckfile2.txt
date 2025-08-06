@@ -1,0 +1,211 @@
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+
+Model Name: Crossformer
+Input Sequence Length: 720
+Prediction Length: 720
+Learning Rate Adjustment Type: type1
+mse: 3.5268545150756836
+mae: 0.972080647945404
+Epoch Cost time: 9655.679272413254
+
+Model Name: Crossformer
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 3.513012647628784
+mae: 0.9436008930206299
+Epoch Cost time: 10656.000662565231
+
+Model Name: Crossformer
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 3.115400791168213
+mae: 0.8903450965881348
+Epoch Cost time: 14227.251467704773
+
+Model Name: Crossformer
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 2.702702283859253
+mae: 0.8220290541648865
+Epoch Cost time: 14234.938554286957
+
+Model Name: Crossformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type2
+mse: 2.3978586196899414
+mae: 0.6970788240432739
+Epoch Cost time: 14240.33478808403
+
+Model Name: FEDformer
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 2.5801498889923096
+mae: 0.790854275226593
+Epoch Cost time: 14304.9781396389
+
+Model Name: FEDformer
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.5151054859161377
+mae: 0.7779150605201721
+Epoch Cost time: 8761.20283818245
+
+Model Name: FEDformer
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 2.2083051204681396
+mae: 0.7317196726799011
+Epoch Cost time: 9997.58352136612
+
+Model Name: FedFormer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 2.0858426094055176
+mae: 0.702654242515564
+Epoch Cost time: 9637.743840456009
+
+Model Name: FUSST
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.5867785215377808
+mae: 0.45299604535102844
+Epoch Cost time: 11113.064485788345
+
+Model Name: FUSST
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 1.7897837162017822
+mae: 0.5224279761314392
+Epoch Cost time: 9655.45100235939
+
+Model Name: FUSST
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 2.1265225410461426
+mae: 0.6026824116706848
+Epoch Cost time: 11169.49123620987
+
+Model Name: FUSST
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.0654447078704834
+mae: 0.5887762904167175
+Epoch Cost time: 9676.673071622849
+
+Model Name: FUSST
+Input Sequence Length: 720
+Prediction Length: 720
+Learning Rate Adjustment Type: type1
+mse: 3.3482394218444824
+mae: 0.832334578037262
+Epoch Cost time: 4498.136207342148
+
+Model Name: FUSST
+Input Sequence Length: 1440
+Prediction Length: 1440
+Learning Rate Adjustment Type: type1
+mse: 4.429808616638184
+mae: 1.1396549940109253
+Epoch Cost time: 4605.1429271698
+
+Model Name: FUSST
+Input Sequence Length: 192
+Prediction Length: 24
+Learning Rate Adjustment Type: type1
+mse: 1.296694040298462
+mae: 0.37197059392929077
+Epoch Cost time: 4570.494649887085
+
+Model Name: Autoformer
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.4205241203308105
+mae: 0.7627061605453491
+Epoch Cost time: 4530.474227666855
+
+Model Name: Autoformer
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 2.039632558822632
+mae: 0.6712631583213806
+Epoch Cost time: 4522.958790540695
+
+Model Name: Autoformer
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.845353126525879
+mae: 0.5954226851463318
+Epoch Cost time: 4520.923404932022
+
+Model Name: DLinear
+Input Sequence Length: 1440
+Prediction Length: 1440
+Learning Rate Adjustment Type: type1
+mse: 4.24737548828125
+mae: 1.099176287651062
+Epoch Cost time: 2980.930457830429
+
+Model Name: DLinear
+Input Sequence Length: 720
+Prediction Length: 720
+Learning Rate Adjustment Type: type1
+mse: 3.1348679065704346
+mae: 0.8354629874229431
+Epoch Cost time: 2766.96599984169
+
+Model Name: DLinear
+Input Sequence Length: 360
+Prediction Length: 360
+Learning Rate Adjustment Type: type1
+mse: 2.189939498901367
+mae: 0.6377171277999878
+Epoch Cost time: 2765.57172703743
+
+Model Name: DLinear
+Input Sequence Length: 336
+Prediction Length: 336
+Learning Rate Adjustment Type: type1
+mse: 2.145732879638672
+mae: 0.627136766910553
+Epoch Cost time: 2768.15988445282
+
+Model Name: DLinear
+Input Sequence Length: 192
+Prediction Length: 192
+Learning Rate Adjustment Type: type1
+mse: 1.9135582447052002
+mae: 0.5749268531799316
+Epoch Cost time: 2758.779586315155
+
+Model Name: DLinear
+Input Sequence Length: 96
+Prediction Length: 96
+Learning Rate Adjustment Type: type1
+mse: 1.740369200706482
+mae: 0.5240353941917419
+Epoch Cost time: 2760.8867151737213
+
+
+
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-------------------XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
