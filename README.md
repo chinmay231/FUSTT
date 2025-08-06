@@ -32,3 +32,9 @@ We appreciate the dataset provided by
 https://www.oceannetworks.ca/
 
 We appreciate guidance and product sponsorship by NRC.
+
+
+Contributing Owners- 
+Chinmay Kapoor 
+Bhan Singh 
+Navneet Kaur Popli
