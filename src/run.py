@@ -49,6 +49,14 @@ if __name__ == '__main__':
     parser.add_argument('--anomaly_ratio', type=float, default=0.25, help='prior anomaly ratio (%)')
 
     # model define
+
+    # --- MC-Dropout controls (ADD THESE) ---
+    parser.add_argument('--mc_passes', type=int, default=50,
+                    help='>0 enables MC Dropout at test-time; e.g., 50')
+    parser.add_argument('--pi_alpha', type=float, default=0.05,
+                    help='alpha for prediction intervals; 0.05 => 95% PI')
+
+
     parser.add_argument('--top_k', type=int, default=5, help='for TimesBlock')
     parser.add_argument('--num_kernels', type=int, default=6, help='for Inception')
     parser.add_argument('--enc_in', type=int, default=7, help='encoder input size')

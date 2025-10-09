@@ -9,6 +9,8 @@ import os
 import time
 import warnings
 import numpy as np
+from utils.mc_dropout import mc_predict, gaussian_pi, picp_mpiw
+
 
 warnings.filterwarnings('ignore')
 
@@ -186,76 +188,129 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
         preds = []
         trues = []
-        folder_path = './test_results/' + setting + '/'
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
+
+        # === unified result root ===
+        root_folder = os.path.join('./resultfile', setting)
+        folder_vis  = os.path.join(root_folder, 'visuals')
+        folder_np   = os.path.join(root_folder, 'npy')
+        folder_unc  = os.path.join(root_folder, 'uncertainty')
+        folder_attn = os.path.join(root_folder, 'attention')
+        os.makedirs(folder_vis, exist_ok=True)
+        os.makedirs(folder_np,  exist_ok=True)
+        os.makedirs(folder_unc, exist_ok=True)
+        os.makedirs(folder_attn, exist_ok=True)
+
+        # MC-Dropout controls (safe defaults if not in args)
+        T = getattr(self.args, 'mc_passes', 0)        # set >0 to enable MCD (e.g., 50)
+        alpha = getattr(self.args, 'pi_alpha', 0.05)  # 95% PI
+
+        # accumulators for global PICP/MPIW when MCD is on
+        total_inside = 0
+        total_width  = 0.0
+        total_points = 0
 
         self.model.eval()
         with torch.no_grad():
             for i, (batch_x, batch_y, batch_x_mark, batch_y_mark) in enumerate(test_loader):
                 batch_x = batch_x.float().to(self.device)
                 batch_y = batch_y.float().to(self.device)
-
                 batch_x_mark = batch_x_mark.float().to(self.device)
                 batch_y_mark = batch_y_mark.float().to(self.device)
 
                 # decoder input
                 dec_inp = torch.zeros_like(batch_y[:, -self.args.pred_len:, :]).float()
                 dec_inp = torch.cat([batch_y[:, :self.args.label_len, :], dec_inp], dim=1).float().to(self.device)
-                # encoder - decoder
+
+                # forward (deterministic point forecast)
                 if self.args.use_amp:
                     with torch.cuda.amp.autocast():
                         if self.args.output_attention:
-                            outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
+                            outputs, _ = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                         else:
                             outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                 else:
                     if self.args.output_attention:
-                        outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)[0]
-
+                        outputs, _ = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
                     else:
                         outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
 
                 f_dim = -1 if self.args.features == 'MS' else 0
-                outputs = outputs[:, -self.args.pred_len:, f_dim:]
-                batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-                outputs = outputs.detach().cpu().numpy()
-                batch_y = batch_y.detach().cpu().numpy()
+                outputs = outputs[:, -self.args.pred_len:, f_dim:]              # [B,P,F]
+                y_true  = batch_y[:, -self.args.pred_len:, f_dim:]              # [B,P,F]
 
-                pred = outputs
-                true = batch_y
+                # save a quick visual every 20 iters (as before)
+                out_np  = outputs.detach().cpu().numpy()
+                true_np = y_true.detach().cpu().numpy()
+                preds.append(out_np)
+                trues.append(true_np)
 
-                preds.append(pred)
-                trues.append(true)
                 if i % 20 == 0:
-                    input = batch_x.detach().cpu().numpy()
-                    gt = np.concatenate((input[0, :, -1], true[0, :, -1]), axis=0)
-                    pd = np.concatenate((input[0, :, -1], pred[0, :, -1]), axis=0)
-                    visual(gt, pd, os.path.join(folder_path, str(i) + '.pdf'))
+                    from utils.tools import visual
+                    input_np = batch_x.detach().cpu().numpy()
+                    gt = np.concatenate((input_np[0, :, -1], true_np[0, :, -1]), axis=0)
+                    pd = np.concatenate((input_np[0, :, -1], out_np[0, :, -1]), axis=0)
+                    visual(gt, pd, os.path.join(folder_vis, f'{i}.pdf'))
 
+                # === MC-Dropout uncertainty (optional) ===
+                if T and T > 0:
+                    mean, std = mc_predict(self.model, (batch_x, batch_x_mark, dec_inp, batch_y_mark), T=T)  # [B,P,F]
+                    lo, hi   = gaussian_pi(mean, std, alpha=alpha)                                          # [B,P,F]
+
+                    # accumulate coverage/width
+                    inside = ((y_true >= lo) & (y_true <= hi)).float().sum().item()
+                    width  = (hi - lo).mean().item()
+                    pts    = y_true.numel()
+                    total_inside += inside
+                    total_width  += width
+                    total_points += pts
+
+                    # save first few batches completely for plotting
+                    if i < 5:
+                        np.savez(os.path.join(folder_unc, f'batch_{i}.npz'),
+                                mean=mean.cpu().numpy(),
+                                std=std.cpu().numpy(),
+                                lo=lo.cpu().numpy(),
+                                hi=hi.cpu().numpy(),
+                                y=y_true.cpu().numpy())
+
+                # === attention dump (first few batches) ===
+                if self.args.output_attention and i < 3:
+                    attn_pack = self.model.get_last_attn()
+                    if "encoder_attn" in attn_pack:
+                        for li, a in enumerate(attn_pack["encoder_attn"]):
+                            np.save(os.path.join(folder_attn, f'encoder_layer{li}_batch{i}.npy'),
+                                    a.detach().cpu().numpy())
+
+        # stack predictions
         preds = np.array(preds)
         trues = np.array(trues)
-        print('test shape:', preds.shape, trues.shape)
         preds = preds.reshape(-1, preds.shape[-2], preds.shape[-1])
         trues = trues.reshape(-1, trues.shape[-2], trues.shape[-1])
-        print('test shape:', preds.shape, trues.shape)
 
-        # result save
-        folder_path = './results/' + setting + '/'
-        if not os.path.exists(folder_path):
-            os.makedirs(folder_path)
-
+        # metrics + saves
+        from utils.metrics import metric
         mae, mse, rmse, mape, mspe = metric(preds, trues)
         print('mse:{}, mae:{}'.format(mse, mae))
-        f = open("result_long_term_forecast.txt", 'a')
-        f.write(setting + "  \n")
-        f.write('mse:{}, mae:{}'.format(mse, mae))
-        f.write('\n')
-        f.write('\n')
-        f.close()
 
-        np.save(folder_path + 'metrics.npy', np.array([mae, mse, rmse, mape, mspe]))
-        np.save(folder_path + 'pred.npy', preds)
-        np.save(folder_path + 'true.npy', trues)
+        # unified saves
+        np.save(os.path.join(folder_np, 'metrics.npy'), np.array([mae, mse, rmse, mape, mspe]))
+        np.save(os.path.join(folder_np, 'pred.npy'), preds)
+        np.save(os.path.join(folder_np, 'true.npy'), trues)
 
+        # write a concise text summary (you asked to paste into a separate file)
+        with open(os.path.join(root_folder, 'summary.txt'), 'w') as f:
+            f.write(f"SETTING: {setting}\n")
+            f.write(f"MSE: {mse:.6f}, MAE: {mae:.6f}, RMSE: {rmse:.6f}\n")
+
+        # finalize MCD coverage if enabled
+        if T and T > 0:
+            picp = total_inside / total_points
+            mpiw = total_width / max(1, len(test_loader))
+            print(f"[MCD] (1-alpha)={1-alpha:.2f}  PICP={picp:.3f}  MPIW={mpiw:.6f}")
+            with open(os.path.join(root_folder, 'uncertainty_summary.txt'), 'w') as f:
+                f.write(f"MC_PASSES: {T}, ALPHA: {alpha}\n")
+                f.write(f"PICP: {picp:.6f}\n")
+                f.write(f"MPIW: {mpiw:.6f}\n")
+
+        # still return model-compatible end
         return

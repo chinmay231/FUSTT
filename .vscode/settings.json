@@ -1,0 +1,9 @@
+{
+    "python.envFile": "${workspaceFolder}\\.env",
+    "python.analysis.extraPaths": [
+        "C:\\Users\\kapoo\\FUSTT\\src"
+    ],
+    "python.defaultInterpreterPath": "C:\\Users\\kapoo\\FUSTT\\.venv\\Scripts\\python.exe",
+    "python.analysis.indexing": true,
+    "python.analysis.autoImportCompletions": true
+}

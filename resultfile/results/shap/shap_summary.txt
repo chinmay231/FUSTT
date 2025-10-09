@@ -1,0 +1,10 @@
+Feature order: Conductivity (S/m), Density (kg/m3), Practical Salinity (psu), Pressure (decibar), Temperature (C), Turbidity (NTU), Chlorophyll (ug/l), Oxygen Concentration Corrected (ml/l)
+Top-5 drivers for Chlorophyll:
+1. Chlorophyll (ug/l): 0.002024
+2. Pressure (decibar): 0.000116
+3. Temperature (C): 0.000074
+4. Conductivity (S/m): 0.000059
+5. Density (kg/m3): 0.000058
+
+Top-10 lags (time steps in the 96-step lookback):
+95(0.003492), 76(0.000937), 77(0.000885), 74(0.000878), 94(0.000812), 84(0.000804), 75(0.000764), 87(0.000763), 78(0.000702), 85(0.000696)
