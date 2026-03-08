@@ -22,9 +22,9 @@ TO RUN FUSTT, we use FUSST as the name for the code file (we called it fusst fir
 
 If you find our repo useful, please cite our paper:
 
-```
-**TO BE ADDED, Awaiting publication.**
-```
+
+https://nrc-publications.canada.ca/eng/view/object/?id=b6e13850-2fad-4a9a-bc92-f22e16f8b226
+
 
 ## Acknowledgement
 
@@ -38,3 +38,4 @@ Contributing Owners-
 Chinmay Kapoor 
 Bhan Singh 
 Navneet Kaur Popli
+
